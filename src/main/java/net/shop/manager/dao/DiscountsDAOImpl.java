@@ -16,12 +16,12 @@ public class DiscountsDAOImpl implements DiscountsDAO {
 	
 	@Override
 	public void endDiscount() {
-
+		
 	}
 
 	@Override
-	public void newDiscount() {
-		
+	public void newDiscount(Discounts discount) {
+		sessionFactory.getCurrentSession().save(discount);
 	}
 
 	@Override

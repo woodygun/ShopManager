@@ -8,7 +8,7 @@ public interface DiscountsService {
 
 	public void endDiscounts();
 	
-	public void newDiscounts();
+	public void newDiscounts(Discounts discount);
 	
 	public Discounts getDiscounts();
 	

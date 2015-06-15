@@ -22,8 +22,8 @@ public class DiscountsServiceImpl implements DiscountsService {
 	}
 
     @Transactional
-	public void newDiscounts() {
-    	discountsDAO.newDiscount();
+	public void newDiscounts(Discounts discount) {
+    	discountsDAO.newDiscount(discount);
 	}
 
     @Transactional

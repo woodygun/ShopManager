@@ -8,7 +8,7 @@ public interface DiscountsDAO {
 	
 	public void endDiscount();
 	
-	public void newDiscount();
+	public void newDiscount(Discounts discount);
 	
 	public Discounts getDiscount();
 	
