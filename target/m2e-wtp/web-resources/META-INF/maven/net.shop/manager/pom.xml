@@ -33,6 +33,7 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 				
+				
 				<!-- hibernate -->	
 		<dependency>
             <groupId>org.hibernate</groupId>

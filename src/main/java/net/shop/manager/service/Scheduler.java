@@ -7,8 +7,10 @@ import java.util.Random;
 import net.shop.manager.domain.Discounts;
 import net.shop.manager.domain.Goods;
 
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+@EnableScheduling
 public class Scheduler {
 	Discounts discount;
 	DiscountsService discountsService;
@@ -33,7 +35,6 @@ public class Scheduler {
 		discount.setPricesEnd(endDate);
 		discount.setStatus("true");
 		
-		discountsService.newDiscounts(discount);
-		
+		discountsService.newDiscounts(discount);	
     }
 }
