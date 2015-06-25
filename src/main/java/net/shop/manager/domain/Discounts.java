@@ -1,6 +1,6 @@
 package net.shop.manager.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,6 +33,15 @@ public class Discounts {
 	@Column(name = "STATUS")
 	private String status;
 	
+	
+	public String getStatus()
+    {
+    	return status;
+    }
+    public void setStatus(String status)
+    {
+    	this.status=status;
+    } 
 	public Integer getId()
     {
     	return id;
@@ -54,5 +63,21 @@ public class Discounts {
     public void setDiscountAmount(Integer discountAmount)
     {
     	this.discountAmount=discountAmount;
+    }
+    public Date getPricesStart()
+    {
+    	return pricesStart;
+    }
+    public void setPricesStart(Date pricesStart)
+    {
+    	this.pricesStart=pricesStart;
+    }
+    public Date getPricesEnd()
+    {
+    	return pricesEnd;
+    }
+    public void setPricesEnd(Date pricesEnd)
+    {
+    	this.pricesStart=pricesEnd;
     }
 }
