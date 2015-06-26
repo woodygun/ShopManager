@@ -11,7 +11,7 @@
 </head>
 <body>
 <h2><spring:message code="label.titlegoods" /><a href="/manager/Sale"><spring:message code="label.titlesale" /></a></h2>
-
+<p>Скидка на ${DiscountsGoodsName} ${DiscountsAmount}% до ${DiscountsDate}</p>
 <table>
 <tr>
 <td>

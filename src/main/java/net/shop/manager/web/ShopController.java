@@ -3,9 +3,11 @@ package net.shop.manager.web;
 import java.util.List;
 import java.util.Map;
 
+import net.shop.manager.domain.Discounts;
 import net.shop.manager.domain.Goods;
 import net.shop.manager.domain.Sale;
 import net.shop.manager.domain.ViewData;
+import net.shop.manager.service.DiscountsService;
 import net.shop.manager.service.GoodsService;
 import net.shop.manager.service.SaleService;
 
@@ -25,9 +27,12 @@ public class ShopController {
 	    private GoodsService goodsService;
 	    @Autowired
 	    private SaleService saleService;
-
+	    @Autowired
+	    private DiscountsService discountsService;
+	    
 	    private int pageGoods=1;
-		
+		private Discounts DiscountsNow;
+	    
 	    @RequestMapping("/index")
 	    public String listContacts(Map<String, Object> map) {
 	        return "redirect:/Goods";
@@ -36,8 +41,14 @@ public class ShopController {
 	    
 	    @RequestMapping(value ="/Goods")
 	    public String listGoods(Map<String, Object> map) {
+	    	
+	    	DiscountsNow=discountsService.getDiscounts();
 	    	pageGoods = pageGoods < 1 ? 1 : pageGoods;   	
-	        map.put("goods", new Goods());
+	        
+	    	map.put("DiscountsGoodsName", goodsService.GetGoodsByID(DiscountsNow.getIdGoods()).getnomination());
+	    	map.put("DiscountsAmount",DiscountsNow.getDiscountAmount());
+	    	map.put("DiscountsDate",DiscountsNow.getPricesEnd());
+	    	map.put("goods", new Goods());
 	        map.put("goodsList", goodsService.listGoodsForPage(pageGoods));
 	        map.put("maxPages",goodsService.PageCount());
 	        

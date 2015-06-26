@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import net.shop.manager.domain.Discounts;
+import net.shop.manager.domain.Goods;
 
 @Repository
 public class DiscountsDAOImpl implements DiscountsDAO {
@@ -21,8 +22,11 @@ public class DiscountsDAOImpl implements DiscountsDAO {
 
 
 	public Discounts getDiscount() {
-		return (Discounts)sessionFactory.getCurrentSession().
-				 createQuery("from Discounts WHERE status=\"true\"").uniqueResult();	
+		//return (Discounts)sessionFactory.getCurrentSession().
+		//		 createQuery("from Discounts WHERE status=\"true\"").uniqueResult();	
+		return (Discounts) sessionFactory.getCurrentSession().createCriteria(Discounts.class)
+				.add(Expression.eq("status","true"))
+				.uniqueResult();
 	}
 
 
