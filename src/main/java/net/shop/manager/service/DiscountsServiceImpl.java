@@ -13,11 +13,6 @@ public class DiscountsServiceImpl implements DiscountsService {
 
 	@Autowired
     private DiscountsDAO discountsDAO;
-	
-    @Transactional
-	public void endDiscounts() {
-    	discountsDAO.endDiscount();
-	}
 
     @Transactional
 	public void newDiscounts(Discounts discount) {

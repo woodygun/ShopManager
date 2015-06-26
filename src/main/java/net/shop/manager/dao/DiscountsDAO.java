@@ -6,8 +6,6 @@ import net.shop.manager.domain.Discounts;
 
 public interface DiscountsDAO {
 	
-	public void endDiscount();
-	
 	public void newDiscount(Discounts discount);
 	
 	public Discounts getDiscount();

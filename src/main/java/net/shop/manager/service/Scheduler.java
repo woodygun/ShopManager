@@ -23,7 +23,7 @@ public class Scheduler {
 	Random random = new Random();
 	List<Goods> goods;
 	List<Discounts> discountsList;
-	//@Scheduled(fixedDelay = 1000)
+	
     public void createDiscount() {
     	endAllDiscounts();
     	

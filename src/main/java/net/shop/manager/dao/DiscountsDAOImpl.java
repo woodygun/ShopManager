@@ -14,12 +14,6 @@ public class DiscountsDAOImpl implements DiscountsDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-
-	public void endDiscount() {
-		
-	}
-
 
 	public void newDiscount(Discounts discount) {
 		sessionFactory.getCurrentSession().save(discount);
@@ -28,7 +22,7 @@ public class DiscountsDAOImpl implements DiscountsDAO {
 
 	public Discounts getDiscount() {
 		return (Discounts)sessionFactory.getCurrentSession().
-				 createQuery("from Discounts WHERE status=\"active\"").uniqueResult();	
+				 createQuery("from Discounts WHERE status=\"true\"").uniqueResult();	
 	}
 
 

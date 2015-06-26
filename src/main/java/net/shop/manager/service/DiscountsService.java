@@ -6,8 +6,6 @@ import net.shop.manager.domain.Discounts;
 
 public interface DiscountsService {
 
-	public void endDiscounts();
-	
 	public void newDiscounts(Discounts discount);
 	
 	public Discounts getDiscounts();
