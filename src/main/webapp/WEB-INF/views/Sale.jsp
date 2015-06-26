@@ -18,11 +18,11 @@
 	
 	<table>
 		<tr>
-			<td><form:label path="id_goods">
-				<spring:message code="label.id_goods" />
+			<td><form:label path="idGoods">
+				<spring:message code="label.idGoods" />
 			</form:label></td>
 			<td>
-			<p><select size="1" name="id_goods">
+			<p><select size="1" name="idGoods">
 			<option disabled>Выберите товар</option>
     			<c:forEach items="${goodsList}" var="goods">
     				<option value=${goods.id}>${goods.nomination}</option>
@@ -53,7 +53,7 @@
 		</tr>
 		<c:forEach items="${saleList}" var="sale">
 			<c:forEach items="${goodsAllList}" var="goods">
-				<c:if test="${sale.id_goods eq goods.id}" >
+				<c:if test="${sale.idGoods eq goods.id}" >
 					<tr>
 						<td><a href="/manager/Sale${goods.id}">${goods.nomination}</a></td>
 						<td>${sale.amount}</td>
