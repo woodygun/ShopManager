@@ -22,7 +22,7 @@ public class Goods {
 	    private String nomination;
 
 	    @Column(name = "PRICE")
-	    private Integer price;
+	    private Float price;
 	    
 	    @Column(name = "ISDELETE")
 	    private String isDelete;
@@ -45,11 +45,11 @@ public class Goods {
 	    {
 	    	this.nomination=nomination;
 	    }
-	    public Integer getPrice()
+	    public Float getPrice()
 	    {
 	    	return price;
 	    }
-	    public void setPrice(Integer price)
+	    public void setPrice(Float price)
 	    {
 	    	this.price=price;
 	    }

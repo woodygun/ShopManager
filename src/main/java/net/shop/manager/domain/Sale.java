@@ -26,7 +26,7 @@ public class Sale {
 	private Integer amount;
 
 	@Column(name = "PRICE")
-	private Integer price;
+	private Float price;
 
 	@Column(name = "createddate")
 	private String date;
@@ -64,11 +64,11 @@ public class Sale {
 		this.amount = amount;
 	}
 
-	public Integer getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 }

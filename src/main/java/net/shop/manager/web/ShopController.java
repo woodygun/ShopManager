@@ -44,10 +44,12 @@ public class ShopController {
 	    	
 	    	discountsNow=discountsService.getDiscounts();
 	    	pageGoods = pageGoods < 1 ? 1 : pageGoods;   	
-	        
+	    	if(discountsNow!=null)
+	        {
 	    	map.put("DiscountsGoodsName", goodsService.getGoodsByID(discountsNow.getIdGoods()).getNomination());
 	    	map.put("DiscountsAmount",discountsNow.getDiscountAmount());
 	    	map.put("DiscountsDate",discountsNow.getPricesEnd());
+	        }
 	    	map.put("goods", new Goods());
 	        map.put("goodsList", goodsService.listGoodsForPage(pageGoods));
 	        map.put("maxPages",goodsService.pageCount());
@@ -67,9 +69,12 @@ public class ShopController {
 	        map.put("goodsInfoList",goodsService.getGoodsByID(goodsId).getNomination());
 	        
 	        discountsNow=discountsService.getDiscounts();
+	        if(discountsNow!=null)
+	        {
 	        map.put("DiscountsGoodsName", goodsService.getGoodsByID(discountsNow.getIdGoods()).getNomination());
 	    	map.put("DiscountsAmount",discountsNow.getDiscountAmount());
 	    	map.put("DiscountsDate",discountsNow.getPricesEnd());
+	        }
 	        
 	    	return "Goods";
 	    }
@@ -128,7 +133,7 @@ public class ShopController {
 	    @RequestMapping(value = "/addSale", method = RequestMethod.POST)
 	    public String addSale(@ModelAttribute("viewdata") ViewData newViewData,
 	            BindingResult result) {
-	    	int salePrice;
+	    	Float salePrice;
 	    	
 	    	if(newViewData.getAmount()!=null && goodsService.getGoodsByID(newViewData.getIdGoods())!=null)
 	    	{

@@ -4,7 +4,7 @@ public class ViewData {
 	private Integer idGoods;
 	private Integer amount;
 	private String nomination;
-	private Integer price;
+	private Float price;
 	
 	public Integer getIdGoods() {
 		return idGoods;
@@ -24,10 +24,10 @@ public class ViewData {
 	public void setNomination(String nomination) {
 		this.nomination = nomination;
 	}
-	public Integer getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(Integer price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 	

@@ -26,13 +26,15 @@ public class Scheduler {
 	List<Discounts> discountsList;
 	
     public void createDiscount() {
+    	
+    	goods=goodsService.listGoods();
+		if(goods!=null){
+    	
     	finishAllDiscounts();
     	
 		Date startDate = new Date();
-		Long time = startDate.getTime()+60*60;
+		Long time = startDate.getTime()+1000*60*5;
 		Date endDate = new Date(time);
-		
-		goods=goodsService.listGoods();
 		
 		int goodsId=goods.get(random.nextInt(goods.size())).getId();
 		
@@ -44,6 +46,7 @@ public class Scheduler {
 		discount.setStatus("true");
 		
 		discountsService.newDiscounts(discount);	
+		}
     }
     
     private void finishAllDiscounts()
