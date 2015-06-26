@@ -4,8 +4,6 @@ import java.util.List;
 
 import net.shop.manager.dao.DiscountsDAO;
 import net.shop.manager.domain.Discounts;
-import net.shop.manager.domain.Goods;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

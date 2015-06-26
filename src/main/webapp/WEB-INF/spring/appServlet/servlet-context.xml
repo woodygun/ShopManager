@@ -25,5 +25,4 @@
 	
 	<!-- Файл с настройками контроллеров -->
 	<beans:import resource="controllers.xml" />
-	
 </beans:beans>

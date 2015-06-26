@@ -7,19 +7,25 @@ import java.util.Random;
 import net.shop.manager.domain.Discounts;
 import net.shop.manager.domain.Goods;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-@EnableScheduling
 public class Scheduler {
 	Discounts discount;
+	
+	@Autowired
 	DiscountsService discountsService;
+	
+	@Autowired
 	GoodsService goodsService;
+	
 	Random random = new Random();
 	List<Goods> goods;
 	
-	@Scheduled(fixedDelay = 1000)
+	//@Scheduled(fixedDelay = 1000)
     public void createDiscount() {
+		
 		Date startDate = new Date();
 		Long time = startDate.getTime()+60*60;
 		Date endDate = new Date(time);

@@ -25,7 +25,7 @@ public class ShopController {
 	    private GoodsService goodsService;
 	    @Autowired
 	    private SaleService saleService;
-	    
+
 	    private int pageGoods=1;
 		
 	    @RequestMapping("/index")

@@ -27,7 +27,14 @@
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
 	
-	<task:annotation-driven />
-	<bean id="scheduler" class="net.shop.manager.service.Scheduler">
-	</bean>
+	<bean id="discounts" class="net.shop.manager.service.Scheduler"></bean>
+	
+	<task:scheduler id="sessionCleanerSheduler"/>
+	<task:scheduled-tasks scheduler="sessionCleanerSheduler">
+  	<task:scheduled 
+      ref="discounts" 
+      method="createDiscount"
+      fixed-delay="#{1000*10}"/>
+	</task:scheduled-tasks>
+	
 </beans>

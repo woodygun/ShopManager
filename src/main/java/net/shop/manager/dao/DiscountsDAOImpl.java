@@ -5,32 +5,33 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Expression;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import net.shop.manager.domain.Discounts;
-import net.shop.manager.domain.Goods;
 
+@Repository
 public class DiscountsDAOImpl implements DiscountsDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	@Override
+
 	public void endDiscount() {
 		
 	}
 
-	@Override
+
 	public void newDiscount(Discounts discount) {
 		sessionFactory.getCurrentSession().save(discount);
 	}
 
-	@Override
+
 	public Discounts getDiscount() {
 		return (Discounts)sessionFactory.getCurrentSession().
 				 createQuery("from Discounts WHERE status=\"active\"").uniqueResult();	
 	}
 
-	@Override
+
 	public List<Discounts> getAllDiscounts() {
 		return sessionFactory.getCurrentSession().createCriteria(Discounts.class).list();	
 	}
