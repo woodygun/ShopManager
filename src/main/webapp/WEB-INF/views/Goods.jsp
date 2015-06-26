@@ -10,7 +10,13 @@
 	<title><spring:message code="label.title" /></title>
 </head>
 <body>
-<h2><spring:message code="label.titlegoods" /><a href="/manager/Sale"><spring:message code="label.titlesale" /></a></h2>
+
+<h2>
+	<spring:message code="label.titlegoods" />
+	<a href="/manager/Sale"><spring:message code="label.titlesale" /></a>
+	<a href="/manager/Discounts"><spring:message code="label.DiscountsHistory" /></a>
+</h2>
+
 <p>Скидка на ${DiscountsGoodsName} ${DiscountsAmount}% до ${DiscountsDate}</p>
 <table>
 <tr>

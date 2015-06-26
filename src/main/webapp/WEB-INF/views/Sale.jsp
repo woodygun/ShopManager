@@ -10,7 +10,11 @@
 	<title><spring:message code="label.title" /></title>
 </head>
 <body>
-<h2><a href="/manager/Goods"><spring:message code="label.titlegoods" /></a><spring:message code="label.titlesale" /></h2>
+<h2>
+	<a href="/manager/Goods"><spring:message code="label.titlegoods" /></a>
+	<spring:message code="label.titlesale" />
+	<a href="/manager/Discounts"><spring:message code="label.DiscountsHistory" /></a>
+</h2>
 
 <table>
 <tr><td>
