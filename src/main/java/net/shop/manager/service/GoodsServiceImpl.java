@@ -37,24 +37,24 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Transactional
 	public void updateGoods(Goods goods) {
-    	goodsDAO.UpdateGoods(goods);
+    	goodsDAO.updateGoods(goods);
 	}
 
     @Transactional
-    public Goods GetGoodsByID(Integer id){
-    	return goodsDAO.GetGoodsByID(id);
+    public Goods getGoodsByID(Integer id){
+    	return goodsDAO.getGoodsByID(id);
     }
     
     @Transactional
-    public int PageCount()
+    public int pageCount()
     {
-    	return goodsDAO.PageCount();
+    	return goodsDAO.pageCount();
     }
     
     @Transactional
-    public List<Goods> listGoodsForPage(Integer page_number)
+    public List<Goods> listGoodsForPage(Integer pageNumber)
     {
-    	return goodsDAO.listGoodsForPage(page_number);
+    	return goodsDAO.listGoodsForPage(pageNumber);
     }
 
 }

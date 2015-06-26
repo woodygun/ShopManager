@@ -25,8 +25,9 @@ public class SaleDAOImpl implements SaleDAO {
 	            .list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Sale> SaleByGoodsId(Integer id) {
+	public List<Sale> saleByGoodsId(Integer id) {
 		return sessionFactory.getCurrentSession().createQuery("from Sale WHERE id_goods="+id)
 	            .list();
 	}

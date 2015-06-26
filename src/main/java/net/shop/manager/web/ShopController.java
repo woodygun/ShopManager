@@ -31,7 +31,7 @@ public class ShopController {
 	    private DiscountsService discountsService;
 	    
 	    private int pageGoods=1;
-		private Discounts DiscountsNow;
+		private Discounts discountsNow;
 	    
 	    @RequestMapping("/index")
 	    public String listContacts(Map<String, Object> map) {
@@ -42,34 +42,34 @@ public class ShopController {
 	    @RequestMapping(value ="/Goods")
 	    public String listGoods(Map<String, Object> map) {
 	    	
-	    	DiscountsNow=discountsService.getDiscounts();
+	    	discountsNow=discountsService.getDiscounts();
 	    	pageGoods = pageGoods < 1 ? 1 : pageGoods;   	
 	        
-	    	map.put("DiscountsGoodsName", goodsService.GetGoodsByID(DiscountsNow.getIdGoods()).getnomination());
-	    	map.put("DiscountsAmount",DiscountsNow.getDiscountAmount());
-	    	map.put("DiscountsDate",DiscountsNow.getPricesEnd());
+	    	map.put("DiscountsGoodsName", goodsService.getGoodsByID(discountsNow.getIdGoods()).getNomination());
+	    	map.put("DiscountsAmount",discountsNow.getDiscountAmount());
+	    	map.put("DiscountsDate",discountsNow.getPricesEnd());
 	    	map.put("goods", new Goods());
 	        map.put("goodsList", goodsService.listGoodsForPage(pageGoods));
-	        map.put("maxPages",goodsService.PageCount());
+	        map.put("maxPages",goodsService.pageCount());
 	        
 	        return "Goods";
 	    }
 	    //Выводит информацию о продажах товара
-	    @RequestMapping("/Goods{GoodsId}")
-	    public String GoodsSaleInfo(@PathVariable("GoodsId") Integer GoodsId,
+	    @RequestMapping("/Goods{goodsId}")
+	    public String goodsSaleInfo(@PathVariable("goodsId") Integer goodsId,
 	    							Map<String, Object> map) {
 	    	
 	    	pageGoods = pageGoods < 1 ? 1 : pageGoods;
 	        map.put("goods", new Goods());
 	        map.put("goodsList", goodsService.listGoodsForPage(pageGoods));
-	        map.put("maxPages",goodsService.PageCount());
-	        map.put("saleGoodsList",saleService.SaleByGoodsId(GoodsId));
-	        map.put("goodsInfoList",goodsService.GetGoodsByID(GoodsId).getnomination());
+	        map.put("maxPages",goodsService.pageCount());
+	        map.put("saleGoodsList",saleService.saleByGoodsId(goodsId));
+	        map.put("goodsInfoList",goodsService.getGoodsByID(goodsId).getNomination());
 	        
-	        DiscountsNow=discountsService.getDiscounts();
-	        map.put("DiscountsGoodsName", goodsService.GetGoodsByID(DiscountsNow.getIdGoods()).getnomination());
-	    	map.put("DiscountsAmount",DiscountsNow.getDiscountAmount());
-	    	map.put("DiscountsDate",DiscountsNow.getPricesEnd());
+	        discountsNow=discountsService.getDiscounts();
+	        map.put("DiscountsGoodsName", goodsService.getGoodsByID(discountsNow.getIdGoods()).getNomination());
+	    	map.put("DiscountsAmount",discountsNow.getDiscountAmount());
+	    	map.put("DiscountsDate",discountsNow.getPricesEnd());
 	        
 	    	return "Goods";
 	    }
@@ -89,16 +89,16 @@ public class ShopController {
 	    }
 	    
 	    //Информация о товаре
-	    @RequestMapping("/Sale{GoodsId}")
-	    public String SaleGoodsInfo(@PathVariable("GoodsId") Integer GoodsId,
+	    @RequestMapping("/Sale{goodsId}")
+	    public String saleGoodsInfo(@PathVariable("goodsId") Integer goodsId,
 	    		Map<String, Object> map) {
 	    	map.put("goods", new Goods());
 	        map.put("goodsAllList", goodsService.listAllGoods());
 	        map.put("goodsList", goodsService.listGoods());
 	        map.put("sale", new Sale());
 	        map.put("saleList", saleService.listSale());
-	        map.put("goods_nomination", goodsService.GetGoodsByID(GoodsId).getnomination());
-	        map.put("goods_price", goodsService.GetGoodsByID(GoodsId).getprice().toString());        
+	        map.put("goods_nomination", goodsService.getGoodsByID(goodsId).getNomination());
+	        map.put("goods_price", goodsService.getGoodsByID(goodsId).getPrice().toString());        
 	        return "Sale";
 	    }
 	    
@@ -108,60 +108,60 @@ public class ShopController {
 	    }
 	    
 	    @RequestMapping(value = "/addGoods", method = RequestMethod.POST)
-	    public String addGoods(@ModelAttribute("viewdata") ViewData NewVD,
+	    public String addGoods(@ModelAttribute("viewdata") ViewData newViewData,
 	            BindingResult result) 
 	    {
-	    	if(NewVD.getNomination()!= "" && NewVD.getPrice()!= null)
+	    	if(newViewData.getNomination()!= "" && newViewData.getPrice()!= null)
 	    	{
-	    	Goods Newgoods=NewVD.getNewGoods();
+	    	Goods newGoods=newViewData.getNewGoods();
 	    	
-	    	for(Goods Oldgoods:goodsService.listGoods())
+	    	for(Goods oldGoods:goodsService.listGoods())
 	    	{
-	    		if(Newgoods.getnomination().equals(Oldgoods.getnomination()))
+	    		if(newGoods.getNomination().equals(oldGoods.getNomination()))
 	    			return "redirect:/Goods";
 	    	}
-	    	goodsService.addGoods(Newgoods);
+	    	goodsService.addGoods(newGoods);
 	    	}
 	        return "redirect:/Goods";
 	    }
 
 	    @RequestMapping(value = "/addSale", method = RequestMethod.POST)
-	    public String addSale(@ModelAttribute("viewdata") ViewData NewVD,
+	    public String addSale(@ModelAttribute("viewdata") ViewData newViewData,
 	            BindingResult result) {
 	    	int salePrice;
 	    	
-	    	if(NewVD.getAmount()!=null && goodsService.GetGoodsByID(NewVD.getId_goods())!=null)
+	    	if(newViewData.getAmount()!=null && goodsService.getGoodsByID(newViewData.getIdGoods())!=null)
 	    	{
-	    	Sale NewSale=NewVD.getNewSale();
+	    	Sale newSale=newViewData.getNewSale();
 	    	
-	    	salePrice=goodsService.GetGoodsByID(NewSale.getid_goods()).
-	        		getprice();
+	    	salePrice=goodsService.getGoodsByID(newSale.getIdGoods()).
+	        		getPrice();
 	        
-	    	if(NewVD.getId_goods().equals(discountsService.getDiscounts().getIdGoods()))
+	    	if(newViewData.getIdGoods().equals(discountsService.getDiscounts().getIdGoods()))
 	    		salePrice-=salePrice/100*discountsService.getDiscounts().getDiscountAmount();
 	    		
-	    	NewSale.setprice(salePrice*NewSale.getamount());
+	    	newSale.setPrice(salePrice*newSale.getAmount());
 	    	
-	    	saleService.addSale(NewSale);
+	    	saleService.addSale(newSale);
 	    	}
 	        return "redirect:/Sale";
 	    }
 	   
-	    @RequestMapping("/deleteGoods/{GoodsId}")
-	    public String deleteGoods(@PathVariable("GoodsId") Integer GoodsId) {
-	    	if(goodsService.GetGoodsByID(GoodsId)!=null)//
-	    		goodsService.removeGoods(GoodsId);
+	    @RequestMapping("/deleteGoods/{goodsId}")
+	    public String deleteGoods(@PathVariable("goodsId") Integer goodsId) {
+	    	if(goodsService.getGoodsByID(goodsId)!=null)//
+	    		goodsService.removeGoods(goodsId);
 	        
 	        return "redirect:/Goods";
 	    }
 	    
-	    @RequestMapping(value = "/updateGoods/{GoodsId}", method = RequestMethod.POST)
-	    public String updateGoods(@PathVariable("GoodsId") Integer GoodsId,
-	    							@ModelAttribute("viewdata") ViewData NewVD,
+	    @RequestMapping(value = "/updateGoods/{goodsId}", method = RequestMethod.POST)
+	    public String updateGoods(@PathVariable("goodsId") Integer goodsId,
+	    							@ModelAttribute("viewdata") ViewData newViewData,
 	    							BindingResult result){
-	    	if(goodsService.GetGoodsByID(GoodsId)!=null && NewVD.getNomination()!="" //
-	    			&& NewVD.getPrice()>0)
-	    		goodsService.updateGoods(NewVD.getGoodsForUpdate(GoodsId));
+	    	if(goodsService.getGoodsByID(goodsId)!=null && newViewData.getNomination()!="" //
+	    			&& newViewData.getPrice()>0)
+	    		goodsService.updateGoods(newViewData.getGoodsForUpdate(goodsId));
 	        
 	        return "redirect:/Goods";
 	    }

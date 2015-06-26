@@ -16,10 +16,10 @@ public interface GoodsService {
     
     public void updateGoods(Goods goods);
     
-    public Goods GetGoodsByID(Integer id);
+    public Goods getGoodsByID(Integer id);
     
-    public int PageCount();
+    public int pageCount();
     
-    public List<Goods> listGoodsForPage(Integer page_number);
+    public List<Goods> listGoodsForPage(Integer pageNumber);
     
 }

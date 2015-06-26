@@ -14,11 +14,11 @@ public interface GoodsDAO {
 
     public void removeGoods(Integer id);
     
-    public void UpdateGoods(Goods good);
+    public void updateGoods(Goods goods);
     
-    public Goods GetGoodsByID(Integer id);
+    public Goods getGoodsByID(Integer id);
     
-    public int PageCount();
+    public int pageCount();
     
     public List<Goods> listGoodsForPage(Integer page_number);
     

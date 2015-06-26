@@ -12,6 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 public class Scheduler {
+	
 	Discounts discount;
 	
 	@Autowired
@@ -25,7 +26,7 @@ public class Scheduler {
 	List<Discounts> discountsList;
 	
     public void createDiscount() {
-    	endAllDiscounts();
+    	finishAllDiscounts();
     	
 		Date startDate = new Date();
 		Long time = startDate.getTime()+60*60;
@@ -45,7 +46,7 @@ public class Scheduler {
 		discountsService.newDiscounts(discount);	
     }
     
-    private void endAllDiscounts()
+    private void finishAllDiscounts()
     {
     	discountsList=discountsService.getAllDiscounts();
     	

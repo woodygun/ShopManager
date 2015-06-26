@@ -36,7 +36,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	}
 	
 	
-	public int PageCount()
+	public int pageCount()
 	{
 		int result;
 		if(listGoodsCount()%10>0)
@@ -65,19 +65,18 @@ public class GoodsDAOImpl implements GoodsDAO {
 		Goods goods = (Goods) sessionFactory.getCurrentSession().load(
 				Goods.class, id);
         if (null != goods) {
-        	goods.setisDelete("true");
+        	goods.setIsDelete("true");
         }
 	}
 
-	public void UpdateGoods(Goods newGoods) {		
+	public void updateGoods(Goods newGoods) {		
 		if (newGoods != null) {
-			newGoods.setisDelete("false");
+			newGoods.setIsDelete("false");
         	sessionFactory.getCurrentSession().update(newGoods);
         }
 	}
 
-	@SuppressWarnings("unchecked")
-	public Goods GetGoodsByID(Integer id) {
+	public Goods getGoodsByID(Integer id) {
 		 return (Goods)sessionFactory.getCurrentSession().
 				 createQuery("from Goods WHERE id="+id).uniqueResult();
 	}

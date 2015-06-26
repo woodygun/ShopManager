@@ -26,8 +26,8 @@ public class SaleServiceImpl implements SaleService {
 	}
 
     @Transactional
-	public List<Sale> SaleByGoodsId(Integer id) {
-		return saleDAO.SaleByGoodsId(id);
+	public List<Sale> saleByGoodsId(Integer id) {
+		return saleDAO.saleByGoodsId(id);
 	}
 
 }

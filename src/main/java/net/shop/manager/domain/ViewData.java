@@ -1,16 +1,16 @@
 package net.shop.manager.domain;
 
 public class ViewData {
-	private Integer id_goods;
+	private Integer idGoods;
 	private Integer amount;
 	private String nomination;
 	private Integer price;
 	
-	public Integer getId_goods() {
-		return id_goods;
+	public Integer getIdGoods() {
+		return idGoods;
 	}
-	public void setId_goods(Integer id_goods) {
-		this.id_goods = id_goods;
+	public void setIdGoods(Integer idGoods) {
+		this.idGoods = idGoods;
 	}
 	public Integer getAmount() {
 		return amount;
@@ -31,34 +31,34 @@ public class ViewData {
 		this.price = price;
 	}
 	
-	public Goods getGoodsForUpdate(Integer id_goods)
+	public Goods getGoodsForUpdate(Integer idGoods)
 	{
-		Goods NewGoods=new Goods();
-		NewGoods.setId(id_goods);
-    	NewGoods.setnomination(nomination);
-    	NewGoods.setprice(price);
-    	NewGoods.setisDelete("false");
+		Goods newGoods=new Goods();
+		newGoods.setId(idGoods);
+    	newGoods.setNomination(nomination);
+    	newGoods.setPrice(price);
+    	newGoods.setIsDelete("false");
     	
-    	return NewGoods;
+    	return newGoods;
 	}
 	public Goods getNewGoods()
 	{
-		Goods NewGoods=new Goods();
+		Goods newGoods=new Goods();
     	
-    	NewGoods.setnomination(nomination);
-    	NewGoods.setprice(price);
-    	NewGoods.setisDelete("false");
+    	newGoods.setNomination(nomination);
+    	newGoods.setPrice(price);
+    	newGoods.setIsDelete("false");
     	
-    	return NewGoods;
+    	return newGoods;
 	}
 	public Sale getNewSale()
 	{
-		Sale NewSale=new Sale();
+		Sale newSale=new Sale();
 		
-		NewSale.setid_goods(id_goods);
-		NewSale.setamount(amount);
-		NewSale.setDate();
+		newSale.setIdGoods(idGoods);
+		newSale.setAmount(amount);
+		newSale.setDate();
 		
-		return NewSale;
+		return newSale;
 	}
 }

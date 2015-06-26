@@ -20,7 +20,7 @@ public class Sale {
 	private Integer id;
 
 	@Column(name = "ID_GOODS")
-	private Integer id_goods;
+	private Integer idGoods;
 
 	@Column(name = "AMOUNT")
 	private Integer amount;
@@ -44,31 +44,31 @@ public class Sale {
 		return id;
 	}
 
-	public void setId(Integer ID) {
-		this.id = ID;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public Integer getid_goods() {
-		return id_goods;
+	public Integer getIdGoods() {
+		return idGoods;
 	}
 
-	public void setid_goods(Integer id_goods) {
-		this.id_goods = id_goods;
+	public void setIdGoods(Integer idGoods) {
+		this.idGoods = idGoods;
 	}
 
-	public Integer getamount() {
+	public Integer getAmount() {
 		return amount;
 	}
 
-	public void setamount(Integer amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 
-	public Integer getprice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setprice(Integer price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 }

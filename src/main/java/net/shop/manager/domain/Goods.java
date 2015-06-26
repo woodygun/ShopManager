@@ -37,27 +37,27 @@ public class Goods {
 	    {
 	    	this.id=ID;
 	    } 
-	    public String getnomination()
+	    public String getNomination()
 	    {
 	    	return nomination;
 	    }
-	    public void setnomination(String nomination)
+	    public void setNomination(String nomination)
 	    {
 	    	this.nomination=nomination;
 	    }
-	    public Integer getprice()
+	    public Integer getPrice()
 	    {
 	    	return price;
 	    }
-	    public void setprice(Integer price)
+	    public void setPrice(Integer price)
 	    {
 	    	this.price=price;
 	    }
-	    public String getisDelete()
+	    public String getIsDelete()
 	    {
 	    	return isDelete;
 	    }
-	    public void setisDelete(String isDelete)
+	    public void setIsDelete(String isDelete)
 	    {
 	    	this.isDelete=isDelete;
 	    }

@@ -9,6 +9,6 @@ public interface SaleDAO {
 	
 	public List<Sale> listSale();
 	
-	public List<Sale> SaleByGoodsId(Integer id);
+	public List<Sale> saleByGoodsId(Integer id);
 }
 

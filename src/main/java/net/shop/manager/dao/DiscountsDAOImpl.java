@@ -21,9 +21,7 @@ public class DiscountsDAOImpl implements DiscountsDAO {
 	}
 
 
-	public Discounts getDiscount() {
-		//return (Discounts)sessionFactory.getCurrentSession().
-		//		 createQuery("from Discounts WHERE status=\"true\"").uniqueResult();	
+	public Discounts getDiscount() {	
 		return (Discounts) sessionFactory.getCurrentSession().createCriteria(Discounts.class)
 				.add(Expression.eq("status","true"))
 				.uniqueResult();
