@@ -33,15 +33,6 @@ public class Discounts {
 	@Column(name = "STATUS")
 	private String status;
 	
-	
-	public String getStatus()
-    {
-    	return status;
-    }
-    public void setStatus(String status)
-    {
-    	this.status=status;
-    } 
 	public Integer getId()
     {
     	return id;
@@ -78,6 +69,14 @@ public class Discounts {
     }
     public void setPricesEnd(Date pricesEnd)
     {
-    	this.pricesStart=pricesEnd;
+    	this.pricesEnd=pricesEnd;
     }
+	public String getStatus()
+    {
+    	return status;
+    }
+    public void setStatus(String status)
+    {
+    	this.status=status;
+    } 
 }

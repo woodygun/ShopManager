@@ -34,4 +34,8 @@ public class DiscountsServiceImpl implements DiscountsService {
     	return discountsDAO.getAllDiscounts();		
 	}
 
+    @Transactional
+    public void updateDiscount(Discounts discount){
+    	discountsDAO.updateDiscount(discount);
+    }
 }

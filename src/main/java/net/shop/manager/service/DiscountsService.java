@@ -13,4 +13,6 @@ public interface DiscountsService {
 	public Discounts getDiscounts();
 	
 	public List<Discounts> getAllDiscounts();
+	
+	public void updateDiscount(Discounts discount);
 }

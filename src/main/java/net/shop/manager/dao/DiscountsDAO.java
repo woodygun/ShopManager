@@ -13,4 +13,6 @@ public interface DiscountsDAO {
 	public Discounts getDiscount();
 	
 	public List<Discounts> getAllDiscounts();
+	
+	public void updateDiscount(Discounts discount);
 }

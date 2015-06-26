@@ -22,10 +22,11 @@ public class Scheduler {
 	
 	Random random = new Random();
 	List<Goods> goods;
-	
+	List<Discounts> discountsList;
 	//@Scheduled(fixedDelay = 1000)
     public void createDiscount() {
-		
+    	endAllDiscounts();
+    	
 		Date startDate = new Date();
 		Long time = startDate.getTime()+60*60;
 		Date endDate = new Date(time);
@@ -42,5 +43,19 @@ public class Scheduler {
 		discount.setStatus("true");
 		
 		discountsService.newDiscounts(discount);	
+    }
+    
+    private void endAllDiscounts()
+    {
+    	discountsList=discountsService.getAllDiscounts();
+    	
+    	for(Discounts discount:discountsList)
+    	{
+    		if(discount.getStatus()!="false")
+    		{
+    			discount.setStatus("false");
+    			discountsService.updateDiscount(discount);
+    		}
+    	}
     }
 }

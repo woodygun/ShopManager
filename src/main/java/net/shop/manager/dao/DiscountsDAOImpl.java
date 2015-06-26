@@ -35,5 +35,10 @@ public class DiscountsDAOImpl implements DiscountsDAO {
 	public List<Discounts> getAllDiscounts() {
 		return sessionFactory.getCurrentSession().createCriteria(Discounts.class).list();	
 	}
+	
+	public void updateDiscount(Discounts discount)
+	{ 
+        sessionFactory.getCurrentSession().update(discount);
+	}
 
 }
