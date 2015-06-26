@@ -66,7 +66,12 @@ public class ShopController {
 	        map.put("saleGoodsList",saleService.SaleByGoodsId(GoodsId));
 	        map.put("goodsInfoList",goodsService.GetGoodsByID(GoodsId).getnomination());
 	        
-	        return "Goods";
+	        DiscountsNow=discountsService.getDiscounts();
+	        map.put("DiscountsGoodsName", goodsService.GetGoodsByID(DiscountsNow.getIdGoods()).getnomination());
+	    	map.put("DiscountsAmount",DiscountsNow.getDiscountAmount());
+	    	map.put("DiscountsDate",DiscountsNow.getPricesEnd());
+	        
+	    	return "Goods";
 	    }
 	    
 	    @RequestMapping("/Sale")
@@ -123,13 +128,19 @@ public class ShopController {
 	    @RequestMapping(value = "/addSale", method = RequestMethod.POST)
 	    public String addSale(@ModelAttribute("viewdata") ViewData NewVD,
 	            BindingResult result) {
+	    	int salePrice;
 	    	
 	    	if(NewVD.getAmount()!=null && goodsService.GetGoodsByID(NewVD.getId_goods())!=null)
 	    	{
 	    	Sale NewSale=NewVD.getNewSale();
 	    	
-	        NewSale.setprice(goodsService.GetGoodsByID(NewSale.getid_goods()).
-	        		getprice()*NewSale.getamount());
+	    	salePrice=goodsService.GetGoodsByID(NewSale.getid_goods()).
+	        		getprice();
+	        
+	    	if(NewVD.getId_goods().equals(discountsService.getDiscounts().getIdGoods()))
+	    		salePrice-=salePrice/100*discountsService.getDiscounts().getDiscountAmount();
+	    		
+	    	NewSale.setprice(salePrice*NewSale.getamount());
 	    	
 	    	saleService.addSale(NewSale);
 	    	}
