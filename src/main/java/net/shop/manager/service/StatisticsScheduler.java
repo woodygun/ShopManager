@@ -30,7 +30,7 @@ public class StatisticsScheduler {
 		
 		sales=saleService.getSaleByDate(startDate, endDate);
 		
-		if(sales!=null){
+		if(sales.size()>0){
 
 			salesStatistics=new SalesStatistics();
 			salesStatistics.setSalesStart(startDate);

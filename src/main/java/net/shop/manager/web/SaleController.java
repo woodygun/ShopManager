@@ -2,6 +2,7 @@ package net.shop.manager.web;
 
 import java.util.Map;
 
+import net.shop.manager.domain.Discounts;
 import net.shop.manager.domain.Goods;
 import net.shop.manager.domain.Sale;
 import net.shop.manager.domain.ViewData;
@@ -27,6 +28,8 @@ public class SaleController {
     @Autowired
     private DiscountsService discountsService;
     
+	private Discounts discountsNow;
+    
 	@RequestMapping("/Sale")
     public String listSale(Map<String, Object> map) {
 
@@ -39,6 +42,14 @@ public class SaleController {
         map.put("goods_nomination", "");
         map.put("goods_price", "");
         
+        discountsNow=discountsService.getDiscounts(); 	
+    	if(discountsNow!=null)
+        {
+    	map.put("DiscountsGoodsName", goodsService.getGoodsByID(discountsNow.getIdGoods()).getNomination());
+    	map.put("DiscountsAmount",discountsNow.getDiscountAmount());
+    	map.put("DiscountsDate",discountsNow.getPricesEnd());
+        }
+        
         return "Sale";
     }
 	
@@ -46,6 +57,7 @@ public class SaleController {
     @RequestMapping("/Sale{goodsId}")
     public String saleGoodsInfo(@PathVariable("goodsId") Integer goodsId,
     		Map<String, Object> map) {
+    	
     	map.put("goods", new Goods());
         map.put("goodsAllList", goodsService.listAllGoods());
         map.put("goodsList", goodsService.listGoods());
@@ -53,6 +65,15 @@ public class SaleController {
         map.put("saleList", saleService.listSale());
         map.put("goods_nomination", goodsService.getGoodsByID(goodsId).getNomination());
         map.put("goods_price", goodsService.getGoodsByID(goodsId).getPrice().toString());        
+        
+        discountsNow=discountsService.getDiscounts(); 	
+    	if(discountsNow!=null)
+        {
+    	map.put("DiscountsGoodsName", goodsService.getGoodsByID(discountsNow.getIdGoods()).getNomination());
+    	map.put("DiscountsAmount",discountsNow.getDiscountAmount());
+    	map.put("DiscountsDate",discountsNow.getPricesEnd());
+        }
+    	
         return "Sale";
     }
     

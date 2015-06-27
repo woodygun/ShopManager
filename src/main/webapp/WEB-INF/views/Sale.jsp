@@ -14,7 +14,10 @@
 	<a href="/manager/Goods"><spring:message code="label.titlegoods" /></a>
 	<spring:message code="label.titlesale" />
 	<a href="/manager/Discounts"><spring:message code="label.DiscountsHistory" /></a>
+	<a href="/manager/SalesStatistics"><spring:message code="label.titleSalesStatistics" /></a>
 </h2>
+
+<p>Скидка на ${DiscountsGoodsName} ${DiscountsAmount}% до ${DiscountsDate}</p>
 
 <table>
 <tr><td>

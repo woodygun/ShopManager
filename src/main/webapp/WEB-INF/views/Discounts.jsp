@@ -14,6 +14,7 @@
 	<a href="/manager/Goods"><spring:message code="label.titlegoods" /></a>
 	<a href="/manager/Sale"><spring:message code="label.titlesale" /></a>
 	<spring:message code="label.DiscountsHistory" />
+	<a href="/manager/SalesStatistics"><spring:message code="label.titleSalesStatistics" /></a>
 </h2>
 
 <c:if test="${!empty DiscountsHistoryList}">
