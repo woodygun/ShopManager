@@ -8,5 +8,6 @@
 		<mapping class="net.shop.manager.domain.Goods" />
 		<mapping class="net.shop.manager.domain.Sale" />
 		<mapping class="net.shop.manager.domain.Discounts" />
+		<mapping class="net.shop.manager.domain.SalesStatistics" />
 	</session-factory>
 </hibernate-configuration>
