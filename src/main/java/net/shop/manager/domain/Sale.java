@@ -27,9 +27,6 @@ public class Sale {
 
 	@Column(name = "PRICE")
 	private Float price;
-
-	@Column(name = "createddate")
-	private String date;
 	
 	@Column(name = "discount_price")
 	private Float discountPrice;
@@ -37,14 +34,17 @@ public class Sale {
 	@Column(name = "discount")
 	private String discount;
 	
+	@Column(name = "createddate")
+	private Date date;
+	
 	// Getters and setters
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	public void setDate() {
-		Date d = new Date();
-		SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-		date=format1.format(d);
+		date = new Date();
+		//SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+		//date=format1.format(d);
 	}
 	public Integer getId() {
 		return id;
