@@ -28,7 +28,13 @@
 		</tr>
 		<c:forEach items="${DiscountsHistoryList}" var="Discounts">
 					<tr>
-						<td>${Discounts.idGoods}</td>
+						<td>
+							<c:forEach items="${goodsAllList}" var="goods">
+								<c:if test="${Discounts.idGoods eq goods.id}" >
+							${goods.nomination}
+								</c:if>
+							</c:forEach>
+						</td>
 						<td>${Discounts.discountAmount}%</td>
 						<td>${Discounts.pricesStart}</td>
 						<td>${Discounts.pricesEnd}</td>
