@@ -18,13 +18,12 @@
 
 <c:if test="${!empty DiscountsHistoryList}">
 <h1>Информация о скидках</h1>
-	<table class="data">
-		<tr>
+	<table class="data" border="1">
+		<tr bgcolor=label.CapTablesColor>
 			<th><spring:message code="label.DiscountsGoods" /></th>
 			<th><spring:message code="label.DiscountsAmount" /></th>
 			<th><spring:message code="label.DiscountsDateStart" /></th>
 			<th><spring:message code="label.DiscountsDateFinish" /></th>
-			<th>&nbsp;</th>
 		</tr>
 		<c:forEach items="${DiscountsHistoryList}" var="Discounts">
 					<tr>

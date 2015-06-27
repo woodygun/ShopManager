@@ -45,15 +45,14 @@
 
 	
 <c:if test="${!empty goodsList}">
-	<table class="data">
-		<tr>
+	<table class="data" border="1">
+		<tr bgcolor=label.CapTablesColor>
 			<th><spring:message code="label.nomination" /></th>
 			<th><spring:message code="label.price" /></th>
 			<th></th>
 			<th></th>
 			<th><spring:message code="label.nomination" /></th>
 			<th><spring:message code="label.price" /></th>
-			<th>&nbsp;</th>
 		</tr>
 		<c:forEach items="${goodsList}" var="goods">
 			<form:form method="post" action="updateGoods/${goods.id}" commandName="goods">
@@ -90,11 +89,10 @@
 <td>
 <c:if test="${!empty saleGoodsList}">
 <h1>Информация о продажах ${goodsInfoList}</h1>
-	<table class="data">
-		<tr>
+	<table class="data" border="1">
+		<tr bgcolor=label.CapTablesColor>
 			<th><spring:message code="label.amount" /></th>
 			<th><spring:message code="label.price" /></th>
-			<th>&nbsp;</th>
 		</tr>
 		<c:forEach items="${saleGoodsList}" var="sale">
 					<tr>
