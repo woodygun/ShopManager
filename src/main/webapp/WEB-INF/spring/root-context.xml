@@ -28,12 +28,17 @@
 	<import resource="data.xml" />
 	
 	<bean id="discounts" class="net.shop.manager.service.Scheduler"></bean>
+	<bean id="saleStatistic" class="net.shop.manager.service.StatisticsScheduler"></bean>
 	
 	<task:scheduler id="sessionCleanerSheduler"/>
 	<task:scheduled-tasks scheduler="sessionCleanerSheduler">
   	<task:scheduled 
       ref="discounts" 
       method="createDiscount"
+      fixed-delay="#{1000*60*5}"/>
+    <task:scheduled 
+      ref="saleStatistic" 
+      method="newSalesStatistics"
       fixed-delay="#{1000*60*5}"/>
 	</task:scheduled-tasks>
 	

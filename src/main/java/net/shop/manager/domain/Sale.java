@@ -43,8 +43,6 @@ public class Sale {
 	}
 	public void setDate() {
 		date = new Date();
-		//SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-		//date=format1.format(d);
 	}
 	public Integer getId() {
 		return id;

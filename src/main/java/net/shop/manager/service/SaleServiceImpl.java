@@ -1,5 +1,6 @@
 package net.shop.manager.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,8 @@ public class SaleServiceImpl implements SaleService {
 		return saleDAO.saleByGoodsId(id);
 	}
 
+    @Transactional
+    public List<Sale> getSaleByDate(Date startDate,Date endDate){
+    	return saleDAO.getSaleByDate(startDate, endDate);
+    }
 }

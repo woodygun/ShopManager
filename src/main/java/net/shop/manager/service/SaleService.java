@@ -1,5 +1,6 @@
 package net.shop.manager.service;
 
+import java.util.Date;
 import java.util.List;
 
 import net.shop.manager.domain.Sale;
@@ -11,5 +12,7 @@ public interface SaleService {
 	public List<Sale> listSale();
 	
 	public List<Sale> saleByGoodsId(Integer id);
+	
+	public List<Sale> getSaleByDate(Date startDate,Date endDate);
 	
 }

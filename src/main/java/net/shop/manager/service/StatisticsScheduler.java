@@ -19,21 +19,41 @@ public class StatisticsScheduler {
 	SalesStatisticsService saleStatisticsService;
 	
 	SalesStatistics salesStatistics;
-	Date startDate;
-	Date endDate;
-	Long time;
+
+	List<Sale> sales;
 	
 	public void newSalesStatistics()
 	{
-		endDate = new Date();
-		time = endDate.getTime()-1000*60*60;
-		startDate = new Date(time);
+		Date endDate = new Date();
+		Long time = endDate.getTime()-1000*60*5;
+		Date startDate = new Date(time);
 		
-		salesStatistics=new SalesStatistics();
-		salesStatistics.setSalesStart(startDate);
-		salesStatistics.setSalesEnd(endDate);
+		sales=saleService.getSaleByDate(startDate, endDate);
 		
-		saleStatisticsService.addStatistics(salesStatistics);
+		if(sales!=null){
+
+			salesStatistics=new SalesStatistics();
+			salesStatistics.setSalesStart(startDate);
+			salesStatistics.setSalesEnd(endDate);
+			salesStatistics.setAmount(sales.size());
+			
+			float ChecksTotalValue=0;
+			float DiscountsChecksTotalValue=0;
+			for(Sale sale:sales)
+			{
+				ChecksTotalValue+=sale.getPrice();
+				DiscountsChecksTotalValue+=sale.getDiscountPrice();
+			}
+			salesStatistics.setChecksTotalValue(ChecksTotalValue);
+			salesStatistics.setChecksAverageValue(ChecksTotalValue/sales.size());
+			
+			salesStatistics.setAmountOfDiscounts(ChecksTotalValue-DiscountsChecksTotalValue);
+			
+			salesStatistics.setChecksDiscountsTotalValue(DiscountsChecksTotalValue);
+			salesStatistics.setChecksDiscountsAverageValue(DiscountsChecksTotalValue/sales.size());
+		
+			saleStatisticsService.addStatistics(salesStatistics);
+		}
 	}
 	
 }
