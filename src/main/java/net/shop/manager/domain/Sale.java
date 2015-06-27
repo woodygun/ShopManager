@@ -30,7 +30,13 @@ public class Sale {
 
 	@Column(name = "createddate")
 	private String date;
-
+	
+	@Column(name = "discount_price")
+	private Float discountPrice;
+	
+	@Column(name = "discount")
+	private String discount;
+	
 	// Getters and setters
 	public String getDate() {
 		return date;
@@ -43,32 +49,38 @@ public class Sale {
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public Integer getIdGoods() {
 		return idGoods;
 	}
-
 	public void setIdGoods(Integer idGoods) {
 		this.idGoods = idGoods;
 	}
-
 	public Integer getAmount() {
 		return amount;
 	}
-
 	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
-
 	public Float getPrice() {
 		return price;
 	}
-
 	public void setPrice(Float price) {
 		this.price = price;
+	}
+	
+	public Float getDiscountPrice() {
+		return discountPrice;
+	}
+	public void setDiscountPrice(Float discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+	public String getDiscount() {
+		return discount;
+	}
+	public void setDiscount(String discount) {
+		this.discount = discount;
 	}
 }

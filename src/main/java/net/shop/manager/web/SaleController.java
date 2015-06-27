@@ -30,11 +30,12 @@ public class SaleController {
 	@RequestMapping("/Sale")
     public String listSale(Map<String, Object> map) {
 
+	    map.put("sale", new Sale());
+	    map.put("saleList", saleService.listSale());
+		
     	map.put("goods", new Goods());
         map.put("goodsAllList", goodsService.listAllGoods());
-        map.put("goodsList", goodsService.listGoods());
-        map.put("sale", new Sale());
-        map.put("saleList", saleService.listSale());
+        map.put("goodsList", goodsService.listGoods());       
         map.put("goods_nomination", "");
         map.put("goods_price", "");
         
@@ -65,12 +66,17 @@ public class SaleController {
     	Sale newSale=newViewData.getNewSale();
     	
     	salePrice=goodsService.getGoodsByID(newSale.getIdGoods()).
-        		getPrice();
+        		getPrice()*newSale.getAmount();
         
+    	newSale.setPrice(salePrice);
+    	
     	if(newViewData.getIdGoods().equals(discountsService.getDiscounts().getIdGoods()))
+    	{
     		salePrice-=salePrice/100*discountsService.getDiscounts().getDiscountAmount();
+    		newSale.setDiscount(discountsService.getDiscounts().getDiscountAmount().toString());
+    	}
     		
-    	newSale.setPrice(salePrice*newSale.getAmount());
+    	newSale.setDiscountPrice(salePrice);
     	
     	saleService.addSale(newSale);
     	}

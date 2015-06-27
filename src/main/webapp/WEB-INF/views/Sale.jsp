@@ -52,6 +52,8 @@
 			<th><spring:message code="label.nomination" /></th>
 			<th><spring:message code="label.amount" /></th>
 			<th><spring:message code="label.price" /></th>
+			<th><spring:message code="label.discount" /></th>
+			<th><spring:message code="label.discountPrice" /></th>
 			<th><spring:message code="label.data" /></th>
 			<th>&nbsp;</th>
 		</tr>
@@ -62,6 +64,8 @@
 						<td><a href="/manager/Sale${goods.id}">${goods.nomination}</a></td>
 						<td>${sale.amount}</td>
 						<td>${sale.price}</td>
+						<td>${sale.discount}%</td>
+						<td>${sale.discountPrice}</td>
 						<td>${sale.date}</td>
 					</tr>
 				</c:if>	
