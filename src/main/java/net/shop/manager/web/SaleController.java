@@ -91,11 +91,13 @@ public class SaleController {
         
     	newSale.setPrice(salePrice);
     	
-    	if(newViewData.getIdGoods().equals(discountsService.getDiscounts().getIdGoods()))
-    	{
-    		salePrice-=salePrice/100*discountsService.getDiscounts().getDiscountAmount();
-    		newSale.setDiscount(discountsService.getDiscounts().getDiscountAmount().toString());
-    	}
+    	discountsNow=discountsService.getDiscounts(); 
+    	if(discountsNow!=null)
+    		if(newViewData.getIdGoods().equals(discountsService.getDiscounts().getIdGoods()))
+    		{
+    			salePrice-=salePrice/100*discountsService.getDiscounts().getDiscountAmount();
+    			newSale.setDiscount(discountsService.getDiscounts().getDiscountAmount().toString());
+    		}
     		
     	newSale.setDiscountPrice(salePrice);
     	
