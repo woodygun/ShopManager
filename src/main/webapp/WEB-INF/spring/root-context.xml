@@ -35,11 +35,11 @@
   	<task:scheduled 
       ref="discounts" 
       method="createDiscount"
-      fixed-delay="#{1000*60*5}"/>
+      cron="0 0/5 * * * ?"/>
     <task:scheduled 
       ref="saleStatistic" 
       method="newSalesStatistics"
-      fixed-delay="#{1000*60*5}"/>
+      cron="0 0/5 * * * ?"/>
 	</task:scheduled-tasks>
 	
 </beans>
