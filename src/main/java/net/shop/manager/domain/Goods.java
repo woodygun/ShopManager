@@ -1,10 +1,13 @@
 package net.shop.manager.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ public class Goods {
 		@Id
 	    @Column(name = "ID")
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+		@OneToMany(mappedBy = "GOODS", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	    private Integer id;
 
 	    @Column(name = "NOMINATION")
