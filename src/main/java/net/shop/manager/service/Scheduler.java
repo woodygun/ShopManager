@@ -21,11 +21,15 @@ public class Scheduler {
 	@Autowired
 	GoodsService goodsService;
 	
+	private Discounts discountsNow;
+	
 	Random random = new Random();
 	List<Goods> goods;
 	List<Discounts> discountsList;
 	
     public void createDiscount() {
+    	
+    	discountsNow=discountsService.getDiscounts();
     	
     	goods=goodsService.listGoods();
 		if(goods!=null){
@@ -36,16 +40,19 @@ public class Scheduler {
 		Long time = startDate.getTime()+1000*60*5;
 		Date endDate = new Date(time);
 		
-		int goodsId=goods.get(random.nextInt(goods.size())).getId();
+		if(discountsNow.getPricesEnd().getTime()<startDate.getTime()){
 		
-		discount=new Discounts();
-		discount.setDiscountAmount(random.nextInt(6)+4);
-		discount.setIdGoods(goodsId);
-		discount.setPricesStart(startDate);
-		discount.setPricesEnd(endDate);
-		discount.setStatus("true");
+			int goodsId=goods.get(random.nextInt(goods.size())).getId();
 		
-		discountsService.newDiscounts(discount);	
+			discount=new Discounts();
+			discount.setDiscountAmount(random.nextInt(6)+4);
+			discount.setIdGoods(goodsId);
+			discount.setPricesStart(startDate);
+			discount.setPricesEnd(endDate);
+			discount.setStatus("true");
+		
+			discountsService.newDiscounts(discount);
+			}
 		}
     }
     
